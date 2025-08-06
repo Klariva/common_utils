@@ -17,7 +17,7 @@ def upload_to_bucket(bucket, blob_path, f):
     else:
         print(f"File already exists: {blob_path}")
 
-def create_folder(bucket, folder_name):
+def create_folder(bucket, folder_name, is_recursive=False):
     storage_control_client = storage_control_v2.StorageControlClient()
     project_path = storage_control_client.common_project_path("_")
     bucket_path = f"{project_path}/buckets/{bucket}"
@@ -25,6 +25,7 @@ def create_folder(bucket, folder_name):
     request = storage_control_v2.CreateFolderRequest(
         parent=bucket_path,
         folder_id=folder_name,
+        recursive=is_recursive
     )
     response = storage_control_client.create_folder(request=request)
     print(f"Created folder: {response.name}")
