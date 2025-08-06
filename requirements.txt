@@ -1,0 +1,5 @@
+google-auth
+google-cloud-core
+google-cloud-storage
+google-cloud-storage-control
+psycopg
